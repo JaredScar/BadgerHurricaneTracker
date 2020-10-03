@@ -1,0 +1,63 @@
+/* For mobile devices: */
+/* ------------------- */
+/* */
+div.navbar-contain {
+    background-color: #3D486C;
+    position: fixed;
+    width: 100%;
+}
+div.navbar {}
+div.navbar div.nav-logo {
+    display: inline-block;
+    margin-right: 20px;
+}
+div#navbar.short div.nav-logo {
+    margin-right: 130px;
+}
+img#nav-logo {
+    display: none;
+}
+div.navbar div.nav-logo img {
+    height: 100px;
+    width: 260px;
+    vertical-align: middle;
+}
+div#navbar.short div.nav-logo img {
+    height: 60px;
+    width: 60px;
+    vertical-align: middle;
+}
+div.navbar div.nav-buttons {
+    display: inline-block;
+}
+div.navbar div.nav-button {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+div#navbar.short div.nav-button {}
+div.navbar div.nav-button:hover {}
+div.nav-button a {
+    text-decoration: none;
+    color: #DFDFEF;
+}
+@media only screen and (min-width: 667px) {
+    /* For iPhone 6+++ landscape mode: */
+}
+@media only screen and (min-width: 768px) {
+    /* For tablets: */
+}
+@media only screen and (min-width: 1024px) {
+    /* iPad Pros:  */
+}
+@media only screen and (min-width: 1366px) {
+    /* Desktop screens and iPad pro sideways: */
+}
+@media only screen and (min-width: 1500px) {
+    /* Desktop screens 1500px - 1740px : */
+}
+@media only screen and (min-width: 1740px) {
+    /* Desktop screens: */
+}
