@@ -5,6 +5,10 @@ div.navbar-contain {
     background-color: #3D486C;
     position: fixed;
     width: 100%;
+    padding: 20px 0 20px 20px;
+}
+div#navbar.short {
+    padding: 5px 0 5px 20px;
 }
 div.navbar {}
 div.navbar div.nav-logo {
@@ -12,7 +16,7 @@ div.navbar div.nav-logo {
     margin-right: 20px;
 }
 div#navbar.short div.nav-logo {
-    margin-right: 130px;
+    margin-right: 100px;
 }
 img#nav-logo {
     display: none;
@@ -37,7 +41,10 @@ div.navbar div.nav-button {
     margin-left: 15px;
     margin-right: 15px;
 }
-div#navbar.short div.nav-button {}
+div#navbar.short div.nav-button {
+    margin-left: 25px;
+    margin-right: 25px;
+}
 div.navbar div.nav-button:hover {}
 div.nav-button a {
     text-decoration: none;
