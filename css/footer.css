@@ -1,0 +1,38 @@
+/* For mobile devices: */
+/* ------------------- */
+/* */
+div.footer {
+    background-color: #1A1A1A;
+    color: #DFDFEF;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    font-size: 38px;
+}
+div.footer-content {
+    text-align: center;
+    margin: 40px 0 40px 0;
+}
+div.footer a, div.footer a:visited, div.footer a:hover {
+    text-decoration: underline;
+    color: #DFDFEF;
+}
+
+@media only screen and (min-width: 667px) {
+    /* For iPhone 6+++ landscape mode: */
+}
+@media only screen and (min-width: 768px) {
+    /* For tablets: */
+}
+@media only screen and (min-width: 1024px) {
+    /* iPad Pros:  */
+}
+@media only screen and (min-width: 1366px) {
+    /* Desktop screens and iPad pro sideways: */
+}
+@media only screen and (min-width: 1500px) {
+    /* Desktop screens 1500px - 1740px : */
+}
+@media only screen and (min-width: 1740px) {
+    /* Desktop screens: */
+}

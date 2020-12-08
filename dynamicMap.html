@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="css/webReset.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/universal.css" />
+    <link rel="stylesheet" href="css/ol.css" />
+    <link rel="stylesheet" href="css/maps.css" />
     <link rel="stylesheet" href="css/footer.css" />
-    <title>Badger Hurricane Tracker [Home]</title>
+    <title>Badger Hurricane Tracker [Dynamic Map]</title>
 </head>
 <body>
 <div class="navbar-contain" id="navbar">
@@ -39,7 +41,14 @@
     </div>
 </div>
 <!-- CONTENT EXAMPLE -->
+<div id="map-container">
+    <div id="map" class="map"></div>
+    <div style="display: none;">
 
+        <div id="marker" title="Marker"></div>
+        <!-- Popup -->
+    </div>
+</div>
 <!-- END CONTENT EXAMPLE -->
 <div class="footer">
     <div class="footer-content">Built with ❤️ by <a href="" target="_blank">Jared Scarito</a></div>
@@ -50,4 +59,6 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
 <script src="js/ScrollManager.js"></script>
+<script src="js/library/ol.js"></script>
+<script src="js/DynamicMap.js"></script>
 </html>

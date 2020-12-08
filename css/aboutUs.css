@@ -1,0 +1,69 @@
+/* For mobile devices: */
+/* ------------------- */
+/* */
+div.container {
+    padding-top: 155px;
+}
+div.content-container {
+    background-color: #445175;
+    border-radius: 15px;
+    width: 60%;
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 168px;
+}
+div.content-container-center {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.list {
+    width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.content-container h1 {
+    font-size: 36px;
+    text-align: center;
+    font-weight: bolder;
+}
+div.content-container h2 {
+    font-size: 26px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bolder;
+}
+div.content-container h3 {
+    font-size: 20px;
+    margin-top: 15px;
+}
+div.content-container h4 {
+    font-size: 17px;
+    margin-top: 15px;
+    text-align: center;
+}
+div.content-container a, div.content-container a:visited, div.content-container a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 667px) {
+    /* For iPhone 6+++ landscape mode: */
+}
+@media only screen and (min-width: 768px) {
+    /* For tablets: */
+}
+@media only screen and (min-width: 1024px) {
+    /* iPad Pros:  */
+}
+@media only screen and (min-width: 1366px) {
+    /* Desktop screens and iPad pro sideways: */
+}
+@media only screen and (min-width: 1500px) {
+    /* Desktop screens 1500px - 1740px : */
+}
+@media only screen and (min-width: 1740px) {
+    /* Desktop screens: */
+}

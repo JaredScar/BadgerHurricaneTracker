@@ -1,0 +1,27 @@
+/* For mobile devices: */
+/* ------------------- */
+/* */
+body {
+    background-color: #2F364B;
+    color: white;
+    font-family: "Comic Sans MS";
+}
+
+@media only screen and (min-width: 667px) {
+    /* For iPhone 6+++ landscape mode: */
+}
+@media only screen and (min-width: 768px) {
+    /* For tablets: */
+}
+@media only screen and (min-width: 1024px) {
+    /* iPad Pros:  */
+}
+@media only screen and (min-width: 1366px) {
+    /* Desktop screens and iPad pro sideways: */
+}
+@media only screen and (min-width: 1500px) {
+    /* Desktop screens 1500px - 1740px : */
+}
+@media only screen and (min-width: 1740px) {
+    /* Desktop screens: */
+}
