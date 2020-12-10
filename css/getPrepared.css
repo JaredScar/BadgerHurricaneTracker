@@ -1,7 +1,56 @@
 /* For mobile devices: */
 /* ------------------- */
 /* */
-
+div.container {
+    padding-top: 155px;
+}
+div.content-container {
+    background-color: #445175;
+    border-radius: 15px;
+    width: 75%;
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 168px;
+}
+div.content-container h1 {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+div.content-container div.row {
+    margin-bottom: 100px;
+    text-align: center;
+}
+div.content-container div.contain {
+    display: inline-block;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 450px;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+div.content-container div.contain span {
+    display: block;
+    text-decoration: underline;
+    font-size: 17px;
+    margin-top: 20px;
+}
+div.row a {
+    display: inline-block;
+    color: white;
+}
+div.row a:hover img, div.row a:hover span {
+    opacity: .5;
+}
+div.row a:visited {
+    color: white;
+}
+div.row a img {
+    height: 200px;
+    width: 400px;
+}
 @media only screen and (min-width: 667px) {
     /* For iPhone 6+++ landscape mode: */
 }
