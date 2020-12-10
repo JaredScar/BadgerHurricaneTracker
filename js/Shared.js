@@ -99,6 +99,8 @@ function setupHurricaneNews() {
                 count++;
             }
             $('#news').append(toAppend);
+            $('#content').show();
+            $('#loading').hide();
         })
         .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 }

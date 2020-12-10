@@ -7,6 +7,18 @@ body {
     font-family: "Comic Sans MS";
 }
 
+div#loading {
+    background-image: url("img/loading.gif");
+    background-size: 100% 100%;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+#content {
+    display: none;
+}
+
 @media only screen and (min-width: 667px) {
     /* For iPhone 6+++ landscape mode: */
 }
