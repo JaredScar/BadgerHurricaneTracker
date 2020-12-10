@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/webReset.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/universal.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <title>Badger Hurricane Tracker [Home]</title>
 </head>
@@ -39,7 +40,13 @@
     </div>
 </div>
 <!-- CONTENT EXAMPLE -->
-
+<div class="container">
+    <div class="content-container">
+        <h1>NEWS</h1>
+        <div class="news-contain" id="news">
+        </div>
+    </div>
+</div>
 <!-- END CONTENT EXAMPLE -->
 <div class="footer">
     <div class="footer-content">Built with ❤️ by <a href="https://jaredscarito.com" target="_blank">Jared Scarito</a></div>
@@ -50,4 +57,6 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
 <script src="js/ScrollManager.js"></script>
+<script src="js/Shared.js"></script>
+<script>setupHurricaneNews();</script>
 </html>

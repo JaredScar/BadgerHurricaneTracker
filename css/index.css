@@ -1,0 +1,73 @@
+/* For mobile devices: */
+/* ------------------- */
+/* */
+div.container {
+    padding-top: 155px;
+}
+div.content-container {
+    background-color: #445175;
+    border-radius: 15px;
+    width: 75%;
+    padding: 50px;
+    min-height: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 168px;
+}
+div.content-container h1 {
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 50px;
+}
+div#news div {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    line-height: 30px;
+    text-align: center;
+}
+div#news span.blip {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+span.blip.HU {
+    background-color: RED;
+}
+span.blip.TS {
+    background-color: ORANGE;
+}
+span.blip.PC {
+    background-color: YELLOW;
+}
+span.blip.STD {
+    background-color: PINK;
+}
+span.blip.PTC {
+    background-color: lightgreen;
+}
+span.blip.STS {
+    background-color: blue;
+}
+
+@media only screen and (min-width: 667px) {
+    /* For iPhone 6+++ landscape mode: */
+}
+@media only screen and (min-width: 768px) {
+    /* For tablets: */
+}
+@media only screen and (min-width: 1024px) {
+    /* iPad Pros:  */
+}
+@media only screen and (min-width: 1366px) {
+    /* Desktop screens and iPad pro sideways: */
+}
+@media only screen and (min-width: 1500px) {
+    /* Desktop screens 1500px - 1740px : */
+}
+@media only screen and (min-width: 1740px) {
+    /* Desktop screens: */
+}
+

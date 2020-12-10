@@ -19,42 +19,6 @@ var map = new ol.Map({
     }),
 });
 
-function setupHurricaneData() {
-    var url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json";
-    const proxyurl = "https://cors-anywhere.herokuapp.com/"; // Free proxy
-    var data = null;
-    fetch(proxyurl + url) // We use a proxy so we can avoid Access-Control-Allow-Origin problem
-        .then(response => response.text())
-        .then(function(contents) {
-            data = contents;
-            console.log(data);
-            var obj = JSON.parse(data);
-            var count = 1;
-            for (var i = 0; i < Object.keys(obj.activeStorms).length; i++) {
-                var storm = obj.activeStorms[i];
-                var name = storm.name;
-                var classification = storm.classification;
-                var longitude = storm.longitudeNumeric;
-                var latitude = storm.latitudeNumeric;
-                var windMPH = storm.intensity;
-                var pressure = storm.pressure;
-                $('#marker-' + count.toString()).attr('title', "Hurricane " + name);
-
-                var pos = ol.proj.fromLonLat([longitude, latitude]);
-                var marker = new ol.Overlay({
-                    position: pos,
-                    positioning: 'center-center',
-                    element: document.getElementById('marker-' + count.toString()),
-                    //stopEvent: false
-                });
-                map.addOverlay(marker);
-                count++;
-            }
-        })
-        .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
-}
-setupHurricaneData();
-
 /** /
 var pos = ol.proj.fromLonLat([23.3725, 35.208889]);
 
