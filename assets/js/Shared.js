@@ -1,7 +1,7 @@
 function setupHurricaneData() {
     // REAL DATA: https://www.nhc.noaa.gov/CurrentStorms.json
     // SAMPLE DATA: https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json
-    var url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json";
+    var url = "https://www.nhc.noaa.gov/CurrentStorms.json";
     const proxyurl = "https://cors-anywhere.herokuapp.com/"; // Free proxy
     var data = null;
     fetch(proxyurl + url) // We use a proxy so we can avoid Access-Control-Allow-Origin problem
@@ -64,7 +64,7 @@ function setupHurricaneData() {
 function setupHurricaneNews() {
     // REAL DATA: https://www.nhc.noaa.gov/CurrentStorms.json
     // SAMPLE DATA: https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json
-    var url = "https://www.nhc.noaa.gov/productexamples/NHC_JSON_Sample.json";
+    var url = "https://www.nhc.noaa.gov/CurrentStorms.json";
     const proxyurl = "https://cors-anywhere.herokuapp.com/"; // Free proxy
     var data = null;
     var toAppend = "";
