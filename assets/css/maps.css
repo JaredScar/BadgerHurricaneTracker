@@ -1,97 +1,200 @@
-/* For mobile devices: */
-/* ------------------- */
-/* */
-
-div.hoverbubble {
+.map-shell {
     position: relative;
-    text-decoration: none;
+    flex: 1;
+    min-height: 0;
 }
-div.hoverbubble span {
-    display: none;
-    z-index: 99999;
+
+.map {
+    width: 100%;
+    height: 100%;
+    background: #0b1724;
 }
-div.hoverbubble:hover {
+
+.map-panel {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    width: min(340px, calc(100% - 28px));
+    max-height: calc(100% - 28px);
+    overflow: auto;
+    padding: 14px;
+    background: rgba(7, 16, 24, 0.88);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.panel-head h2 {
+    font-size: 16px;
+}
+
+.map-toggle,
+.storm-focus {
+    border: 0;
+    font: inherit;
+    color: inherit;
     cursor: pointer;
 }
-div.hoverbubble:hover span {
-    display: block;
-    position: absolute;
-    padding: .5em;
-    text-align: center;
-    width: auto;
-    height: auto;
+
+.map-toggle {
+    flex: none;
+    border-radius: 999px;
+    padding: 7px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
     white-space: nowrap;
-    top: -85px;
-    background: rgba(0,0,0,.8);
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 0.86em;
-    font-family: Arial, Helvetica, sans-serif;
 }
-div.hoverbubble:hover span:after {
-    position: absolute;
+
+.storm-item {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+}
+
+.storm-item.is-selected .storm-focus {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.storm-focus {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.storm-focus-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.storm-focus-copy strong {
+    font-size: 18px;
+}
+
+.storm-focus-copy em {
+    color: var(--muted);
+    font-style: normal;
+    font-size: 13px;
+}
+
+.swatch {
+    width: 12px;
+    height: 12px;
+    margin-top: 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.16);
+    flex: none;
+}
+
+.forecast-list {
+    display: grid;
+    gap: 4px;
+    margin: 8px 0 0 30px;
+}
+
+.forecast-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.forecast-list li span:first-child {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.panel-note {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.map-popup {
+    display: none;
+    width: max-content;
+    max-width: 240px;
+    padding: 10px 12px;
+    background: rgba(7, 16, 24, 0.94);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: white;
+    font-size: 13px;
+}
+
+.map-popup.is-open {
     display: block;
-    content: "";
-    border-color: rgba(0,0,0,.8) transparent transparent transparent;
-    border-style: solid;
-    border-width: 10px;
-    height: 0;
-    width: 0;
-    bottom: -20px;
-    left: 1em;
 }
-@media only screen and (min-height: 375px) {
-    /* For iPhone 6 landscape mode: */
-    #map-container {
-        height: 280px;
-        width: 100%;
-        padding-top: 145px;
-    }
+
+.map-popup strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 15px;
 }
-@media only screen and (min-height: 768px) {
-    /* For tablets: */
-    #map-container {
-        height: 650px;
-        width: 100%;
-        padding-top: 145px;
+
+.map-popup p + p {
+    margin-top: 2px;
+    color: var(--muted);
+}
+
+.ol-zoom {
+    top: 14px;
+    left: 14px;
+}
+
+.ol-zoom button {
+    width: 32px;
+    height: 32px;
+    background: rgba(7, 16, 24, 0.88);
+    color: white;
+    font-size: 18px;
+}
+
+.ol-attribution {
+    right: auto;
+    bottom: 8px;
+    left: 8px;
+    max-width: min(420px, 46vw);
+    background: rgba(7, 16, 24, 0.72);
+    border-radius: 8px;
+}
+
+.ol-attribution ul {
+    color: #d5deea;
+    font-size: 11px;
+    text-shadow: none;
+}
+
+@media (max-width: 860px) {
+    .map-panel {
+        top: auto;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        width: auto;
+        max-height: 34vh;
     }
 
-    .map {
-        height: 100%;
-        overflow: auto;
-        width: 100%;
+    .ol-attribution {
+        bottom: calc(34vh + 18px);
     }
-}
-@media only screen and (min-width: 1024px) {
-    /* iPad Pros:  */
-    #map-container {
-        height: 670px;
-        width: 100%;
-        padding-top: 145px;
-    }
-
-    .map {
-        height: 100%;
-        overflow: auto;
-        width: 100%;
-    }
-
-    #marker-1, #marker-2, #marker-3, #marker-4, #marker-5, #marker-6, #marker-7, #marker-8, #marker-9, #marker-10 {
-        width: 50px;
-        height: 50px;
-        background: url("https://i.gyazo.com/1a59698855234f3395075428f8797245.gif") no-repeat scroll 0% 0% transparent;
-        position: relative;
-        display: inline-block;
-    }
-}
-@media only screen and (min-width: 1366px) {
-    /* Desktop screens and iPad pro sideways: */
-}
-@media only screen and (min-width: 1500px) {
-    /* Desktop screens 1500px - 1740px : */
-}
-@media only screen and (min-width: 1740px) {
-    /* Desktop screens: */
 }

@@ -1,73 +1,51 @@
-/* For mobile devices: */
-/* ------------------- */
-/* */
-div.container {
-    padding-top: 155px;
-}
-div.content-container {
-    background-color: #445175;
-    border-radius: 15px;
-    width: 75%;
-    padding: 50px;
-    min-height: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 168px;
-}
-div.content-container h1 {
-    font-size: 24px;
-    font-weight: bolder;
-    text-align: center;
-    margin-bottom: 50px;
-}
-div#news div {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    line-height: 30px;
-    text-align: center;
-}
-div#news span.blip {
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    display: inline-block;
-    vertical-align: middle;
-}
-span.blip.HU {
-    background-color: RED;
-}
-span.blip.TS {
-    background-color: ORANGE;
-}
-span.blip.PC {
-    background-color: YELLOW;
-}
-span.blip.STD {
-    background-color: PINK;
-}
-span.blip.PTC {
-    background-color: lightgreen;
-}
-span.blip.STS {
-    background-color: blue;
+.storm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 28px;
 }
 
-@media only screen and (min-width: 667px) {
-    /* For iPhone 6+++ landscape mode: */
-}
-@media only screen and (min-width: 768px) {
-    /* For tablets: */
-}
-@media only screen and (min-width: 1024px) {
-    /* iPad Pros:  */
-}
-@media only screen and (min-width: 1366px) {
-    /* Desktop screens and iPad pro sideways: */
-}
-@media only screen and (min-width: 1500px) {
-    /* Desktop screens 1500px - 1740px : */
-}
-@media only screen and (min-width: 1740px) {
-    /* Desktop screens: */
+.storm-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
 }
 
+.storm-card-top h2 {
+    margin-top: 8px;
+    font-size: 32px;
+    letter-spacing: -0.04em;
+}
+
+.storm-card dl {
+    display: grid;
+    gap: 10px;
+}
+
+.storm-card dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+}
+
+.storm-card dt {
+    color: var(--muted);
+}
+
+.storm-card dd {
+    text-align: right;
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}

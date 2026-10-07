@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e24b8c5f-ce0f-40d1-be8b-6c58b292e6a9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Sources File [Badger Hurricane Tracker].docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/Shared.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/Shared.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jfbppaU2iia7Zm4pckgxX3mrpY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Axeex\PhpstormProjects\BadgerHurricaneTracker\assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Axeex\PhpstormProjects\BadgerHurricaneTracker" />
+      <recent name="C:\Users\Axeex\PhpstormProjects\BadgerHurricaneTracker\css\img" />
+      <recent name="C:\Users\Badger\PhpstormProjects\BadgerHurricaneTracker\css\img" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e24b8c5f-ce0f-40d1-be8b-6c58b292e6a9" name="Default Changelist" comment="" />
+      <created>1601748448837</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601748448837</updated>
+      <workItem from="1601748450219" duration="4450000" />
+      <workItem from="1601773297781" duration="1127000" />
+      <workItem from="1604198279456" duration="49000" />
+      <workItem from="1605817680461" duration="599000" />
+      <workItem from="1606080448079" duration="606000" />
+      <workItem from="1606920150737" duration="32216000" />
+      <workItem from="1607789176426" duration="621000" />
+      <workItem from="1607815928049" duration="694000" />
+    </task>
+    <task id="LOCAL-00001" summary="+ Changed files to HTML since we will not use PHP for this project at all">
+      <created>1601752717864</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601752717865</updated>
+    </task>
+    <task id="LOCAL-00002" summary="+ Added website to README file&#10;+ Changed some metas">
+      <created>1601752900688</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601752900688</updated>
+    </task>
+    <task id="LOCAL-00003" summary="+ CSS Style fixes">
+      <created>1601773824258</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1601773824258</updated>
+    </task>
+    <task id="LOCAL-00004" summary="+ Most of pages set up&#10;+ Added several of the pages&#10;+ Set up maps (as well as extents for them)&#10;&#10;TODO:&#10;[ ] Figure out how to get Hurricane Tracking Data&#10;[ ] Implement Hurricane data into maps with markers&#10;[ ] Finish Get Prepared page&#10;[ ] Finish Home page&#10;[ ] Finish About Us page">
+      <created>1607396477263</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607396477263</updated>
+    </task>
+    <task id="LOCAL-00005" summary="+ Figured out how to get Hurricane Tracking Data&#10;+ Implremented Hurricane data into map with markers&#10;+ Added more to About Us page (need to credit everyone)&#10;&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[ ] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[ ] Finish Get Prepared page&#10;[ ] Finish Home page&#10;[ ] Finish About Us page">
+      <created>1607485117897</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607485117897</updated>
+    </task>
+    <task id="LOCAL-00006" summary="+ Added my credit at bottom to actually link to my site, lol...&#10;&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[ ] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[ ] Finish Get Prepared page&#10;[ ] Finish Home page&#10;[ ] Finish About Us page">
+      <created>1607485298029</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607485298029</updated>
+    </task>
+    <task id="LOCAL-00007" summary="+ Implemented hovers for markers (still need to figure out how to fix z-index problem :/)&#10;+ Implemented finished home page&#10;+ Moved shared code from StaticMap and DynamicMap JavaScript files to Shared.js &#10;&#10;&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[ ] Finish Get Prepared page&#10;[x] Finish Home page&#10;[ ] Finish About Us page&#10;[ ] Make whole site responsive">
+      <created>1607570723666</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607570723666</updated>
+    </task>
+    <task id="LOCAL-00008" summary="TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive">
+      <created>1607639905304</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1607639905304</updated>
+    </task>
+    <task id="LOCAL-00009" summary="+ Added loading screen for news page, tried to add it for maps, but did not seem to work... Will fix at a later date.&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive">
+      <created>1607640990443</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1607640990443</updated>
+    </task>
+    <task id="LOCAL-00010" summary="+ Fixed title tags&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive">
+      <created>1607645975171</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1607645975171</updated>
+    </task>
+    <task id="LOCAL-00011" summary="+ Changed assets locations&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive">
+      <created>1607646684613</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1607646684613</updated>
+    </task>
+    <task id="LOCAL-00012" summary="+ Changed maps to use actual hurricane data instead of sample data&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive">
+      <created>1608327682910</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608327682910</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="+ Changed files to HTML since we will not use PHP for this project at all" />
+    <MESSAGE value="+ Added website to README file&#10;+ Changed some metas" />
+    <MESSAGE value="+ CSS Style fixes" />
+    <MESSAGE value="+ Most of pages set up&#10;+ Added several of the pages&#10;+ Set up maps (as well as extents for them)&#10;&#10;TODO:&#10;[ ] Figure out how to get Hurricane Tracking Data&#10;[ ] Implement Hurricane data into maps with markers&#10;[ ] Finish Get Prepared page&#10;[ ] Finish Home page&#10;[ ] Finish About Us page" />
+    <MESSAGE value="+ Figured out how to get Hurricane Tracking Data&#10;+ Implremented Hurricane data into map with markers&#10;+ Added more to About Us page (need to credit everyone)&#10;&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[ ] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[ ] Finish Get Prepared page&#10;[ ] Finish Home page&#10;[ ] Finish About Us page" />
+    <MESSAGE value="+ Added my credit at bottom to actually link to my site, lol...&#10;&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[ ] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[ ] Finish Get Prepared page&#10;[ ] Finish Home page&#10;[ ] Finish About Us page" />
+    <MESSAGE value="+ Implemented hovers for markers (still need to figure out how to fix z-index problem :/)&#10;+ Implemented finished home page&#10;+ Moved shared code from StaticMap and DynamicMap JavaScript files to Shared.js &#10;&#10;&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[ ] Finish Get Prepared page&#10;[x] Finish Home page&#10;[ ] Finish About Us page&#10;[ ] Make whole site responsive" />
+    <MESSAGE value="TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive" />
+    <MESSAGE value="+ Added loading screen for news page, tried to add it for maps, but did not seem to work... Will fix at a later date.&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive" />
+    <MESSAGE value="+ Fixed title tags&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive" />
+    <MESSAGE value="+ Changed assets locations&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive" />
+    <MESSAGE value="+ Changed maps to use actual hurricane data instead of sample data&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ Changed maps to use actual hurricane data instead of sample data&#10;TODO:&#10;[x] Figure out how to get Hurricane Tracking Data&#10;[x] Implement Hurricane data into maps with markers&#10;[x] Implement hovers for markers including more information about said Hurricane&#10;[ ] Implement overlay over map if no hurricanes found&#10;[x] Finish Get Prepared page&#10;[x] Finish Home page&#10;[x] Finish About Us page&#10;[ ] Make whole site responsive" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="577" y="0" key="CommitChangelistDialog2" timestamp="1608327680408">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="577" y="0" key="CommitChangelistDialog2/0.0.1920.1040/-1920.14.1920.1040/1920.14.1920.1040@0.0.1920.1040" timestamp="1608327680408" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1608327685797">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.14.1920.1040/1920.14.1920.1040@0.0.1920.1040" timestamp="1608327685797" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607380364306">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.14.1920.1040/1920.14.1920.1040@0.0.1920.1040" timestamp="1607380364306" />
+  </component>
+</project>

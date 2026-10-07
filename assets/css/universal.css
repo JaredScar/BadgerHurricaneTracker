@@ -1,39 +1,104 @@
-/* For mobile devices: */
-/* ------------------- */
-/* */
+:root {
+    --bg: #071018;
+    --bg-elev: rgba(16, 26, 40, 0.92);
+    --line: rgba(255, 255, 255, 0.1);
+    --text: #e8eef7;
+    --muted: #93a4ba;
+    --accent: #ff8a3d;
+}
+
+html {
+    background: var(--bg);
+}
+
 body {
-    background-color: #2F364B;
+    background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(255, 138, 61, 0.16), transparent 55%),
+        var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, strong, b {
+    font-weight: 700;
+}
+
+a {
+    color: #9ec5ff;
+}
+
+.page {
+    width: min(1080px, calc(100% - 32px));
+    margin: 32px auto 0;
+}
+
+.page-intro h1 {
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+}
+
+.page-intro p {
+    max-width: 62ch;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 17px;
+}
+
+.eyebrow {
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    border-radius: 999px;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.14);
     color: white;
-    font-family: "Comic Sans MS";
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
-div#loading {
-    background-image: url("img/loading.gif");
-    background-size: 100% 100%;
-    width: 100vw;
-    height: 100vh;
-    display: block;
+.pill.HU { background: #ff3b30; }
+.pill.TS { background: #ff9f1a; color: #1d1303; }
+.pill.TD, .pill.STD { background: #f5d76e; color: #1d1603; }
+.pill.STS { background: #4d7cff; }
+.pill.PTC { background: #7dcea0; color: #06210f; }
+.pill.PC { background: #ffe566; color: #1d1603; }
+
+.empty-state {
+    color: var(--muted);
+    padding: 8px 0 20px;
 }
 
-#content {
-    display: none;
+.text-button {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 14px;
+    font-weight: 650;
+    text-decoration: none;
 }
 
-@media only screen and (min-width: 667px) {
-    /* For iPhone 6+++ landscape mode: */
+.text-button:hover {
+    background: rgba(255, 255, 255, 0.16);
 }
-@media only screen and (min-width: 768px) {
-    /* For tablets: */
-}
-@media only screen and (min-width: 1024px) {
-    /* iPad Pros:  */
-}
-@media only screen and (min-width: 1366px) {
-    /* Desktop screens and iPad pro sideways: */
-}
-@media only screen and (min-width: 1500px) {
-    /* Desktop screens 1500px - 1740px : */
-}
-@media only screen and (min-width: 1740px) {
-    /* Desktop screens: */
+
+.text-button.quiet {
+    background: transparent;
+    color: var(--muted);
 }
