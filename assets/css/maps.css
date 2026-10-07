@@ -2,6 +2,7 @@
     position: relative;
     flex: 1;
     min-height: 0;
+    overflow: hidden;
 }
 
 .map {
@@ -14,11 +15,12 @@
     position: absolute;
     top: 14px;
     right: 14px;
+    bottom: 14px;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
     width: min(340px, calc(100% - 28px));
-    max-height: calc(100% - 28px);
-    overflow: auto;
-    padding: 14px;
+    overflow: hidden;
     background: rgba(7, 16, 24, 0.88);
     border: 1px solid var(--line);
     border-radius: 18px;
@@ -30,9 +32,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex: none;
     gap: 12px;
-    margin-bottom: 12px;
+    padding: 14px 14px 10px;
 }
 
 .panel-head h2 {
@@ -58,9 +60,14 @@
     white-space: nowrap;
 }
 
-.storm-item {
-    margin-top: 10px;
-    padding-top: 10px;
+#storm-list {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 0 8px 8px;
+}
+
+.storm-item + .storm-item {
     border-top: 1px solid var(--line);
 }
 
@@ -105,9 +112,13 @@
 }
 
 .forecast-list {
-    display: grid;
+    display: none;
     gap: 4px;
-    margin: 8px 0 0 30px;
+    margin: 0 8px 10px 30px;
+}
+
+.storm-item.is-selected .forecast-list {
+    display: grid;
 }
 
 .forecast-list li {
@@ -124,7 +135,10 @@
 }
 
 .panel-note {
-    margin-top: 14px;
+    flex: none;
+    margin: 0;
+    padding: 10px 14px 14px;
+    border-top: 1px solid var(--line);
     color: var(--muted);
     font-size: 12px;
 }
@@ -169,12 +183,14 @@
     font-size: 18px;
 }
 
-.ol-attribution {
+.map-shell .ol-attribution,
+.map-shell .ol-attribution:not(.ol-collapsed),
+.map-shell .ol-attribution.ol-uncollapsible {
     right: auto;
     bottom: 8px;
     left: 8px;
-    max-width: min(420px, 46vw);
-    background: rgba(7, 16, 24, 0.72);
+    max-width: min(420px, calc(100% - 16px));
+    background: rgba(7, 16, 24, 0.78);
     border-radius: 8px;
 }
 
@@ -191,10 +207,14 @@
         bottom: 10px;
         left: 10px;
         width: auto;
-        max-height: 34vh;
+        height: min(42vh, 360px);
+        max-height: min(42vh, 360px);
     }
 
-    .ol-attribution {
-        bottom: calc(34vh + 18px);
+    .map-shell .ol-attribution,
+    .map-shell .ol-attribution:not(.ol-collapsed),
+    .map-shell .ol-attribution.ol-uncollapsible {
+        bottom: calc(min(42vh, 360px) + 22px);
+        max-width: calc(100% - 20px);
     }
 }

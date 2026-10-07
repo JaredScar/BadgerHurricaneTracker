@@ -499,7 +499,7 @@ function renderStormList(results) {
         }).join("");
         return ""
             + "<article class=\"storm-item\" data-id=\"" + escapeHtml(storm.id) + "\">"
-            + "<button type=\"button\" class=\"storm-focus\" data-id=\"" + escapeHtml(storm.id) + "\">"
+            + "<button type=\"button\" class=\"storm-focus\" data-id=\"" + escapeHtml(storm.id) + "\" aria-expanded=\"false\">"
             + "<span class=\"swatch\" style=\"background:" + item.color + "\"></span>"
             + "<span class=\"storm-focus-copy\">"
             + "<span class=\"pill " + escapeHtml(storm.classification) + "\">" + escapeHtml(classificationLabel(storm.classification)) + "</span>"
@@ -558,7 +558,19 @@ function focusStorm(stormId) {
         maxZoom: 6,
         duration: 350
     });
+    var selected = null;
     document.querySelectorAll(".storm-item").forEach(function(item) {
-        item.classList.toggle("is-selected", item.getAttribute("data-id") === stormId);
+        var active = item.getAttribute("data-id") === stormId;
+        item.classList.toggle("is-selected", active);
+        var button = item.querySelector(".storm-focus");
+        if (button) {
+            button.setAttribute("aria-expanded", active ? "true" : "false");
+        }
+        if (active) {
+            selected = item;
+        }
     });
+    if (selected) {
+        selected.scrollIntoView({ block: "nearest" });
+    }
 }
