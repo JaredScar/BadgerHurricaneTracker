@@ -70,7 +70,7 @@ a {
     text-transform: uppercase;
 }
 
-.pill.HU { background: #ff3b30; }
+.pill.HU, .pill.TY { background: #ff3b30; }
 .pill.TS { background: #ff9f1a; color: #1d1303; }
 .pill.TD, .pill.STD { background: #f5d76e; color: #1d1603; }
 .pill.STS { background: #4d7cff; }

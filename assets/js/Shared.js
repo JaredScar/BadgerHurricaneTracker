@@ -1,4 +1,4 @@
-var STORM_DATA_URL = "/api/CurrentStorms.json";
+var HURRICANE_SERVICE = "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/Active_Hurricanes_v1/FeatureServer";
 var CLASSIFICATION_LABELS = {
     STD: "Subtropical Depression",
     TD: "Tropical Depression",
@@ -11,12 +11,283 @@ var CLASSIFICATION_LABELS = {
 };
 
 function loadStorms() {
-    return fetch(STORM_DATA_URL).then(function(response) {
-        if (!response.ok) {
-            throw new Error("Storm request failed");
-        }
-        return response.json();
+    return queryLayer(0, POINT_FIELDS).then(function(features) {
+        return {
+            activeStorms: assembleStorms(features, []).map(function(item) {
+                return item.storm;
+            })
+        };
     });
+}
+
+function loadStormGraphics() {
+    return Promise.all([
+        queryLayer(0, POINT_FIELDS),
+        queryLayer(4, "STORMNAME,BASIN,STORMNUM,FCSTPRD")
+    ]).then(function(parts) {
+        return assembleStorms(parts[0], parts[1]);
+    });
+}
+
+var POINT_FIELDS = "STORMNAME,STORMTYPE,BASIN,STORMNUM,TAU,MAXWIND,MSLP,TCDVLP,DVLBL,SSNUM,TCDIR,TCSPD,DATELBL,VALIDTIME,LAT,LON,ADVISNUM,FCSTPRD";
+
+function queryLayer(layerId, fields) {
+    function page(offset, features) {
+        var url = HURRICANE_SERVICE + "/" + layerId + "/query?where=1%3D1&outFields=" + fields
+            + "&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=2000&resultOffset=" + offset;
+        return fetch(url).then(function(response) {
+            if (!response.ok) {
+                throw new Error("Storm request failed");
+            }
+            return response.json();
+        }).then(function(data) {
+            var batch = data.features || [];
+            var next = features.concat(batch);
+            var limited = data.exceededTransferLimit || (data.properties && data.properties.exceededTransferLimit);
+            if (limited && batch.length) {
+                return page(offset + batch.length, next);
+            }
+            return next;
+        });
+    }
+    return page(0, []);
+}
+
+function assembleStorms(pointFeatures, coneFeatures) {
+    var groups = {};
+    pointFeatures.forEach(function(feature) {
+        var props = feature.properties || {};
+        var key = stormKey(props);
+        if (!key) {
+            return;
+        }
+        if (!groups[key]) {
+            groups[key] = [];
+        }
+        groups[key].push(feature);
+    });
+    var cones = {};
+    coneFeatures.forEach(function(feature) {
+        var props = feature.properties || {};
+        var key = stormKey(props);
+        if (!key) {
+            return;
+        }
+        var period = Number(props.FCSTPRD) || 0;
+        if (!cones[key] || period >= cones[key].period) {
+            cones[key] = { period: period, feature: feature };
+        }
+    });
+    return Object.keys(groups).map(function(key) {
+        return stormRecord(key, groups[key], cones[key]);
+    }).filter(function(item) {
+        return item && item.storm.latitudeNumeric != null && item.storm.longitudeNumeric != null;
+    }).sort(function(a, b) {
+        return (Number(b.storm.intensity) || 0) - (Number(a.storm.intensity) || 0);
+    }).map(function(item, index) {
+        var palette = (typeof STORM_COLORS !== "undefined" && STORM_COLORS) || ["#ffb703", "#ff5d8f", "#48cae4", "#c4f54a", "#c77dff"];
+        item.color = palette[index % palette.length];
+        return item;
+    });
+}
+
+function stormRecord(key, features, cone) {
+    var points = features.map(function(feature) {
+        var props = feature.properties || {};
+        var coordinates = feature.geometry && feature.geometry.coordinates;
+        return {
+            props: props,
+            coordinates: coordinates,
+            valid: parseValidTime(props.VALIDTIME)
+        };
+    }).filter(function(point) {
+        return point.coordinates && point.coordinates.length >= 2;
+    });
+    if (!points.length) {
+        return null;
+    }
+    var useTau = points.some(function(point) { return Number(point.props.TAU) > 0; });
+    var origin = chooseOrigin(points);
+    points.forEach(function(point) {
+        point.hour = useTau ? (Number(point.props.TAU) || 0) : hoursFromOrigin(origin, point.valid);
+    });
+    points.sort(function(a, b) { return a.hour - b.hour; });
+    var current = points[0];
+    var props = current.props;
+    var longitude = Number(current.coordinates[0]);
+    var latitude = Number(current.coordinates[1]);
+    var pressure = cleanNumber(props.MSLP, function(value) { return value <= 0 || value >= 1100; });
+    var direction = cleanNumber(props.TCDIR, function(value) { return value < 0 || value > 360; });
+    var speed = cleanNumber(props.TCSPD, function(value) { return value < 0 || value > 200; });
+    if (direction === 0 && speed === 0) {
+        direction = null;
+        speed = null;
+    }
+    var basin = String(props.BASIN || "").toUpperCase();
+    return {
+        storm: {
+            id: key,
+            name: displayName(props.STORMNAME),
+            classification: classificationCode(props),
+            intensity: cleanNumber(props.MAXWIND, function(value) { return value < 0 || value > 250; }),
+            pressure: pressure == null ? "" : String(pressure),
+            latitudeNumeric: latitude,
+            longitudeNumeric: longitude,
+            movementDir: direction,
+            movementSpeed: speed,
+            publicAdvisory: { url: advisoryUrl(basin) }
+        },
+        track: trackCollection(points),
+        cone: cone ? coneCollection(cone.feature) : null
+    };
+}
+
+function trackCollection(points) {
+    var features = [];
+    var splitAt = 0;
+    points.forEach(function(point, index) {
+        if (point.hour <= 72) {
+            splitAt = index;
+        }
+        if (point.hour <= 0) {
+            return;
+        }
+        var wind = cleanNumber(point.props.MAXWIND, function(value) { return value < 0 || value > 250; });
+        features.push({
+            type: "Feature",
+            geometry: { type: "Point", coordinates: point.coordinates },
+            properties: {
+                kind: "point",
+                hour: point.hour,
+                valid: point.props.DATELBL || "",
+                wind: wind == null ? "" : windText(wind),
+                label: point.hour + "h"
+            }
+        });
+    });
+    var coordinates = points.map(function(point) { return point.coordinates; });
+    pushTrack(features, coordinates.slice(0, splitAt + 1), 72);
+    pushTrack(features, coordinates.slice(splitAt), 120);
+    return { type: "FeatureCollection", features: features };
+}
+
+function pushTrack(features, coordinates, hours) {
+    if (coordinates.length < 2) {
+        return;
+    }
+    features.push({
+        type: "Feature",
+        geometry: { type: "LineString", coordinates: coordinates },
+        properties: { kind: "track", hours: hours }
+    });
+}
+
+function coneCollection(feature) {
+    if (!feature.geometry) {
+        return null;
+    }
+    return {
+        type: "FeatureCollection",
+        features: [{
+            type: "Feature",
+            geometry: feature.geometry,
+            properties: { kind: "cone" }
+        }]
+    };
+}
+
+function stormKey(props) {
+    if (props.STORMNUM == null || props.STORMNUM === "") {
+        return "";
+    }
+    return String(props.BASIN || "").toUpperCase() + "-" + props.STORMNUM;
+}
+
+function classificationCode(props) {
+    var type = String(props.STORMTYPE || "").trim().toUpperCase();
+    if (CLASSIFICATION_LABELS[type]) {
+        return type;
+    }
+    var label = String(props.TCDVLP || "").toLowerCase();
+    if (label.indexOf("potential") !== -1) return "PC";
+    if (label.indexOf("post-tropical") !== -1 || label.indexOf("post tropical") !== -1) return "PTC";
+    if (label.indexOf("subtropical depression") !== -1) return "STD";
+    if (label.indexOf("subtropical") !== -1) return "STS";
+    if (label.indexOf("depression") !== -1) return "TD";
+    if (label.indexOf("typhoon") !== -1) return "TY";
+    if (label.indexOf("hurricane") !== -1) return "HU";
+    if (label.indexOf("tropical storm") !== -1 || label.indexOf("storm") !== -1) return "TS";
+    var mark = String(props.DVLBL || "").toUpperCase();
+    if (mark === "H" || mark === "M") return "HU";
+    if (mark === "S") return "TS";
+    if (mark === "D") return "TD";
+    return "TS";
+}
+
+function displayName(name) {
+    return String(name || "Storm").replace(/-([a-z])/g, function(_, letter) {
+        return "-" + letter.toUpperCase();
+    });
+}
+
+function advisoryUrl(basin) {
+    if (basin === "AL" || basin === "EP" || basin === "CP") {
+        return "https://www.nhc.noaa.gov/cyclones/";
+    }
+    if (basin === "WP" || basin === "IO" || basin === "SH") {
+        return "https://www.metoc.navy.mil/jtwc/jtwc.html";
+    }
+    return "https://www.nhc.noaa.gov/";
+}
+
+function cleanNumber(value, invalid) {
+    var number = Number(value);
+    if (!isFinite(number) || number === 9999 || (invalid && invalid(number))) {
+        return null;
+    }
+    return number;
+}
+
+function parseValidTime(value) {
+    var match = /^(\d{1,2})\/(\d{2})(\d{2})$/.exec(String(value || "").trim());
+    if (!match) {
+        return null;
+    }
+    return { day: Number(match[1]), hour: Number(match[2]), minute: Number(match[3]) };
+}
+
+function chooseOrigin(points) {
+    var valids = points.map(function(point) { return point.valid; }).filter(Boolean);
+    var best = valids[0] || null;
+    var bestSpan = Infinity;
+    valids.forEach(function(candidate) {
+        var hours = valids.map(function(valid) { return hoursBetween(candidate, valid); });
+        if (hours.some(function(hour) { return hour < 0; })) {
+            return;
+        }
+        var span = Math.max.apply(null, hours);
+        if (span < bestSpan) {
+            bestSpan = span;
+            best = candidate;
+        }
+    });
+    return best;
+}
+
+function hoursFromOrigin(origin, valid) {
+    var hours = hoursBetween(origin, valid);
+    return hours < 0 ? 0 : hours;
+}
+
+function hoursBetween(origin, valid) {
+    if (!origin || !valid) {
+        return 0;
+    }
+    var dayDiff = valid.day - origin.day;
+    if (dayDiff < -15) {
+        dayDiff += 31;
+    }
+    return dayDiff * 24 + (valid.hour - origin.hour);
 }
 
 function classificationLabel(code) {
@@ -54,6 +325,9 @@ function getCardinalDirection(degree) {
 }
 
 function movementText(storm) {
+    if (storm.movementDir == null || storm.movementDir === "") {
+        return "Movement unavailable";
+    }
     var direction = getCardinalDirection(Number(storm.movementDir));
     var speed = knotsToMph(storm.movementSpeed);
     if (!direction) {
@@ -97,7 +371,7 @@ function stormCard(storm) {
         + "</div>"
         + "<dl>"
         + "<div><dt>Wind</dt><dd>" + escapeHtml(windText(storm.intensity)) + "</dd></div>"
-        + "<div><dt>Pressure</dt><dd>" + escapeHtml(storm.pressure || "—") + " mb</dd></div>"
+        + "<div><dt>Pressure</dt><dd>" + escapeHtml(storm.pressure ? storm.pressure + " mb" : "—") + "</dd></div>"
         + "<div><dt>Motion</dt><dd>" + escapeHtml(movementText(storm)) + "</dd></div>"
         + "</dl>"
         + "<div class=\"card-actions\">"
@@ -122,26 +396,13 @@ function setupHurricaneData() {
         });
     }
 
-    loadStorms()
-        .then(function(data) {
-            var storms = data.activeStorms || [];
-            if (!storms.length) {
+    loadStormGraphics()
+        .then(function(results) {
+            if (!results.length) {
                 list.innerHTML = "<p class=\"empty-state\">No active storms right now.</p>";
                 return null;
             }
-            return Promise.all(storms.map(function(storm, index) {
-                return Promise.all([
-                    loadForecast(storm.forecastTrack && storm.forecastTrack.kmzFile),
-                    loadForecast(storm.trackCone && storm.trackCone.kmzFile)
-                ]).then(function(parts) {
-                    return {
-                        storm: storm,
-                        color: STORM_COLORS[index % STORM_COLORS.length],
-                        track: parts[0],
-                        cone: parts[1]
-                    };
-                });
-            }));
+            return results;
         })
         .then(function(results) {
             if (!results) {
@@ -157,22 +418,6 @@ function setupHurricaneData() {
             if (list) {
                 list.innerHTML = "<p class=\"empty-state\">Storm tracks are unavailable right now.</p>";
             }
-        });
-}
-
-function loadForecast(kmzUrl) {
-    if (!kmzUrl) {
-        return Promise.resolve(null);
-    }
-    return fetch("/api/forecast?kmz=" + encodeURIComponent(kmzUrl))
-        .then(function(response) {
-            if (!response.ok) {
-                throw new Error("Forecast request failed");
-            }
-            return response.json();
-        })
-        .catch(function() {
-            return null;
         });
 }
 
@@ -259,7 +504,7 @@ function renderStormList(results) {
             + "<span class=\"storm-focus-copy\">"
             + "<span class=\"pill " + escapeHtml(storm.classification) + "\">" + escapeHtml(classificationLabel(storm.classification)) + "</span>"
             + "<strong>" + escapeHtml(storm.name) + "</strong>"
-            + "<em>" + escapeHtml(windText(storm.intensity)) + " · " + escapeHtml(storm.pressure || "—") + " mb</em>"
+            + "<em>" + escapeHtml(windText(storm.intensity)) + " · " + escapeHtml(storm.pressure ? storm.pressure + " mb" : "—") + "</em>"
             + "<em>" + escapeHtml(movementText(storm)) + "</em>"
             + "</span>"
             + "</button>"

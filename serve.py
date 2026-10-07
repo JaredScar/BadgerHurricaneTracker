@@ -1,8 +1,7 @@
-"""Local static server with a same-origin proxy for NHC storm data.
+"""Optional local static server.
 
-The National Hurricane Center files have no CORS headers, so the browser cannot
-fetch them directly. Storm summaries are exposed at /api/CurrentStorms.json.
-Forecast tracks and cones are converted from KMZ to GeoJSON at /api/forecast.
+The site reads the CORS-enabled Esri Active Hurricanes service, so GitHub Pages
+does not need this proxy. The /api routes remain for direct NHC file access.
 """
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import io
